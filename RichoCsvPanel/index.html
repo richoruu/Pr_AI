@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Richo CSV Panel</title>
+
+  <!-- CEP / JS 読み込み -->
+  <script src="lib/CSInterface.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/panel_whisper_csv.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 10px;
+      background: #1e1e1e;
+      color: #eee;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 12px;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 14px;
+    }
+    h4 {
+      margin: 12px 0 6px;
+      font-size: 13px;
+    }
+    button {
+      width: 100%;
+      margin-top: 6px;
+      padding: 6px 8px;
+      border: 0;
+      border-radius: 4px;
+      background: #3a3a3a;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #505050;
+    }
+    #log {
+      margin-top: 8px;
+      padding: 6px;
+      background: #111;
+      border-radius: 4px;
+      min-height: 40px;
+      white-space: pre-wrap;
+      font-size: 11px;
+    }
+    .row {
+      margin-top: 6px;
+      margin-bottom: 4px;
+    }
+    label {
+      margin-right: 4px;
+    }
+    select {
+      padding: 2px 4px;
+      font-size: 12px;
+      background: #2a2a2a;
+      color: #eee;
+      border-radius: 3px;
+      border: 1px solid #444;
+    }
+    .hint {
+      margin-top: 4px;
+      font-size: 11px;
+      color: #aaa;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <h3>Richo CSV Panel</h3>
+
+  <!-- 既存テストボタン -->
+  <button id="btnTest">TEST: アラート</button>
+  <button id="btnHello">V12 に「ハロー」MOGRTを挿入</button>
+
+  <!-- Whisper CSV → MOGRT 自動配置エリア -->
+  <h4>Whisper CSV → MOGRT</h4>
+  <div class="row">
+    <label for="vTrackSelect">配置するビデオトラック:</label>
+    <select id="vTrackSelect">
+      <option value="1">V1</option>
+      <option value="2">V2</option>
+      <option value="3">V3</option>
+      <option value="4">V4</option>
+    </select>
+  </div>
+  <button id="btnCsvToMogrt">CSV → MOGRT 自動配置</button>
+
+  <div class="hint">
+    手順：<br>
+    1. プロジェクトパネルで元クリップを1つ選択<br>
+    2. アクティブシーケンスを開いた状態でこのボタンをクリック<br>
+    3. <code>D:/AI_ver1/Whisper_1_0/output/&lt;元クリップ名&gt;.csv</code> を読み込み、選択トラックに MOGRT を自動配置します。
+  </div>
+
+  <div id="log"></div>
+</body>
+</html>
