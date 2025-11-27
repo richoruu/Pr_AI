@@ -331,3 +331,29 @@ function placeMogrtsFromWhisperCsv(videoTrackIndex) {
         return "ERROR: " + e;
     }
 }
+
+
+// ========================
+// ★★★ Debug Wrapper（追加部分）★★★★★
+// ========================
+
+function debug_placeMogrtsWrapper(videoTrackIndex) {
+    try {
+        // 関数が定義されているかチェック
+        if (typeof placeMogrtsFromWhisperCsv !== "function") {
+            var t = typeof placeMogrtsFromWhisperCsv;
+            whisper_logError("NO_FUNC", "typeof placeMogrtsFromWhisperCsv = " + t);
+            return "NO_FUNC: typeof placeMogrtsFromWhisperCsv = " + t;
+        }
+
+        // 実行
+        var result = placeMogrtsFromWhisperCsv(videoTrackIndex);
+        whisper_logInfo("WRAPPER_OK", "Result=" + result);
+        return "OK_CALL: " + result;
+
+    } catch (e) {
+        // ここに来れば ExtendScript の内部エラーをキャッチできる
+        whisper_logError("WRAPPER_ERROR", "" + e);
+        return "ERROR_IN_placeMogrtsFromWhisperCsv: " + e;
+    }
+}
